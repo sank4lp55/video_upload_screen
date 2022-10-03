@@ -1,17 +1,8 @@
-// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:video_upload/screens/add_video.dart';
-// import 'package:tiktok_tutorial/constants.dart';
-// import 'package:tiktok_tutorial/controllers/auth_controller.dart';
-// import 'package:tiktok_tutorial/views/screens/auth/login_screen.dart';
-// import 'package:tiktok_tutorial/views/screens/auth/signup_screen.dart';
+import 'package:video_upload/views/screens/add_video.dart';
 
 void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp().then((value) {
-  //   Get.put(AuthController());
-  // });
   runApp(const MyApp());
 }
 
@@ -22,11 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'TikTok Clone',
+      title: 'video_upload',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Colors.black,
       ),
-      home: AddVideoScreen(),
+      home: const AddVideoScreen(),
     );
   }
 }

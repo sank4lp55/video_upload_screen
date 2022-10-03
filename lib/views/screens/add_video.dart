@@ -1,9 +1,11 @@
 import 'dart:io';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+//import 'package:flutter_camera/flutter_camera.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:tiktok_tutorial/constants.dart';
-// import 'package:tiktok_tutorial/views/screens/confirm_screen.dart';
+import 'package:video_upload/views/screens/camera_page.dart';
+import 'package:video_upload/views/screens/add_video_page.dart';
+import 'package:video_upload/views/screens/confirm_screen.dart';
 
 class AddVideoScreen extends StatelessWidget {
   const AddVideoScreen({Key? key}) : super(key: key);
@@ -11,14 +13,14 @@ class AddVideoScreen extends StatelessWidget {
   pickVideo(ImageSource src, BuildContext context) async {
     final video = await ImagePicker().pickVideo(source: src);
     if (video != null) {
-      // Navigator.of(context).push(
-      //   MaterialPageRoute(
-      //     // builder: (context) => ConfirmScreen(
-      //     //   videoFile: File(video.path),
-      //     //   videoPath: video.path,
-      //     // ),
-      //   ),
-      // );
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => ConfirmScreen(
+            videoFile: File(video.path),
+            videoPath: video.path,
+          ),
+        ),
+      );
     }
   }
 
@@ -43,7 +45,7 @@ class AddVideoScreen extends StatelessWidget {
             ),
           ),
           SimpleDialogOption(
-            onPressed: () => pickVideo(ImageSource.camera, context),
+           onPressed: () => pickVideo(ImageSource.camera, context),
             child: Row(
               children: const [
                 Icon(Icons.camera_alt),
@@ -86,7 +88,7 @@ class AddVideoScreen extends StatelessWidget {
           child: Container(
             width: 190,
             height: 50,
-            decoration: BoxDecoration(color: Colors.green),//buttonColor),
+            decoration: BoxDecoration(color: Colors.green), //buttonColor),
             child: const Center(
               child: Text(
                 'Add Video',
