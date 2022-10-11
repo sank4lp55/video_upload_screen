@@ -6,18 +6,21 @@ import 'package:image_picker/image_picker.dart';
 import 'package:video_upload/views/screens/camera_page.dart';
 import 'package:video_upload/views/screens/add_video_page.dart';
 import 'package:video_upload/views/screens/confirm_screen.dart';
+import 'package:video_upload/views/screens/trim_view.dart';
+import 'package:video_upload/views/screens/video_trim_view.dart';
 
 class AddVideoScreen extends StatelessWidget {
   const AddVideoScreen({Key? key}) : super(key: key);
 
   pickVideo(ImageSource src, BuildContext context) async {
     final video = await ImagePicker().pickVideo(source: src);
+    // File file = File(video.path);
     if (video != null) {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => ConfirmScreen(
-            videoFile: File(video.path),
-            videoPath: video.path,
+          builder: (context) => TrimmerView(
+            file: File(video.path),
+           // videoPath: video.path,
           ),
         ),
       );
@@ -45,7 +48,7 @@ class AddVideoScreen extends StatelessWidget {
             ),
           ),
           SimpleDialogOption(
-           onPressed: () => pickVideo(ImageSource.camera, context),
+            onPressed: () => pickVideo(ImageSource.camera, context),
             child: Row(
               children: const [
                 Icon(Icons.camera_alt),
@@ -88,7 +91,8 @@ class AddVideoScreen extends StatelessWidget {
           child: Container(
             width: 190,
             height: 50,
-            decoration: BoxDecoration(color: Colors.green), //buttonColor),
+            decoration:
+                const BoxDecoration(color: Colors.green), //buttonColor),
             child: const Center(
               child: Text(
                 'Add Video',

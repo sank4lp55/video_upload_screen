@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+//import 'package:get/get.dart';
 import 'package:video_upload/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 

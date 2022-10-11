@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+//import 'package:get/get.dart';
 import 'package:video_upload/views/screens/add_video.dart';
 
 void main() async {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'video_upload',
       theme: ThemeData.dark().copyWith(
