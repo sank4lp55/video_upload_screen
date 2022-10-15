@@ -3,12 +3,16 @@ import 'dart:io';
 //import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:video_trimmer/video_trimmer.dart';
+import 'package:video_upload/views/screens/confirm_screen.dart';
+
 class TrimmerView extends StatefulWidget {
   final File file;
+  final String videoPath;
   //final String videoPath;
   const TrimmerView({
     Key? key,
     required this.file,
+    required this.videoPath,
     //required this.videoPath,
   }) : super(key: key);
   @override
@@ -32,7 +36,24 @@ class _TrimmerViewState extends State<TrimmerView> {
     String? _value;
 
     await _trimmer
-        .saveTrimmedVideo(startValue: _startValue, endValue: _endValue, onSave: (String? outputPath) {  },)
+        .saveTrimmedVideo(
+      startValue: _startValue,
+      endValue: _endValue,
+      onSave: (String? outputPath) {
+        final video = outputPath;
+        // File file = File(video.path);
+        if (video != null) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ConfirmScreen(
+                videoFile: File(video),
+                videoPath: video,
+              ),
+            ),
+          );
+        }
+      },
+    )
         .then((value) {
       setState(() {
         _progressVisibility = false;
@@ -76,19 +97,19 @@ class _TrimmerViewState extends State<TrimmerView> {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: _progressVisibility
-                      ? null
-                      : () async {
-                          _saveVideo().then((outputPath) {
-                            print('OUTPUT PATH: $outputPath');
-                            final snackBar = SnackBar(
-                                content: Text('Video Saved successfully'));
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              snackBar,
-                            );
-                          });
-                        },
-                  child: Text("SAVE"),
+                  onPressed: () async {
+                    // _saveVideo().then((outputPath) {
+                    //   print('OUTPUT PATH: $outputPath');
+                    //   final snackBar = SnackBar(
+                    //       content: Text('Video Saved successfully'));
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     snackBar,
+                    //   );
+                    // });
+                    final video = await _saveVideo();
+                    // File file = File(video.path);
+                  },
+                  child: const Text("SAVE"),
                 ),
                 Expanded(
                   child: VideoViewer(trimmer: _trimmer),
@@ -98,7 +119,7 @@ class _TrimmerViewState extends State<TrimmerView> {
                     trimmer: _trimmer,
                     viewerHeight: 50.0,
                     viewerWidth: MediaQuery.of(context).size.width,
-                    maxVideoLength: Duration(seconds: 10),
+                    maxVideoLength: Duration(seconds: 60),
                     onChangeStart: (value) {
                       _startValue = value;
                     },
