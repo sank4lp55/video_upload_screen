@@ -4,20 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:video_upload/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 
-class ConfirmScreen extends StatefulWidget {
+class CaptionScreen extends StatefulWidget {
   final File videoFile;
   final String videoPath;
-  const ConfirmScreen({
+  const CaptionScreen({
     Key? key,
     required this.videoFile,
     required this.videoPath,
   }) : super(key: key);
 
   @override
-  State<ConfirmScreen> createState() => _ConfirmScreenState();
+  State<CaptionScreen> createState() => _CaptionScreenState();
 }
 
-class _ConfirmScreenState extends State<ConfirmScreen> {
+class _CaptionScreenState extends State<CaptionScreen> {
   late VideoPlayerController controller;
   TextEditingController _songController = TextEditingController();
   TextEditingController _captionController = TextEditingController();
@@ -53,8 +53,8 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
               height: 30,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width / 1,
-              height: MediaQuery.of(context).size.height / 1.2,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 1.5,
               child: VideoPlayer(controller),
             ),
             const SizedBox(
@@ -65,41 +65,37 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  // Container(
-                  //   margin: const EdgeInsets.symmetric(horizontal: 10),
-                  //   width: MediaQuery.of(context).size.width - 20,
-                  //   child: TextInputField(
-                  //     controller: _songController,
-                  //     labelText: 'Song Name',
-                  //     icon: Icons.music_note,
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
-                  // Container(
-                  //   margin: const EdgeInsets.symmetric(horizontal: 10),
-                  //   width: MediaQuery.of(context).size.width - 20,
-                  //   child: TextInputField(
-                  //     controller: _captionController,
-                  //     labelText: 'Caption',
-                  //     icon: Icons.closed_caption,
-                  //   ),
-                  // ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    width: MediaQuery.of(context).size.width - 20,
+                    child: TextInputField(
+                      controller: _songController,
+                      labelText: 'Song Name',
+                      icon: Icons.music_note,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 10),
+                    width: MediaQuery.of(context).size.width - 20,
+                    child: TextInputField(
+                      controller: _captionController,
+                      labelText: 'Caption',
+                      icon: Icons.closed_caption,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   ElevatedButton(
-                      onPressed: () => {
-
-
-
-                      }, //uploadVideoController.uploadVideo(
+                      onPressed: () => {}, //uploadVideoController.uploadVideo(
                       // _songController.text,
                       // _captionController.text,
                       // widget.videoPath),
                       child: const Text(
-                        'Next',
+                        'Share!',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,
