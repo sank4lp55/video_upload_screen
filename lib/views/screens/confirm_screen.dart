@@ -89,18 +89,33 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   // const SizedBox(
                   //   height: 10,
                   // ),
-                  ElevatedButton(
-                      onPressed: () => {
-
-
-
-                      }, //uploadVideoController.uploadVideo(
-                      // _songController.text,
-                      // _captionController.text,
-                      // widget.videoPath),
-                      child: const Text(
-                        'Next',
-                      ))
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.11,
+                        height: MediaQuery.of(context).size.width * 0.11,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              MediaQuery.of(context).size.width * 0.11 / 2)),
+                        ),
+                        child: Icon(Icons.arrow_forward_ios_rounded),
+                      ),
+                      // ElevatedButton(
+                      //     onPressed: () =>
+                      //         {}, //uploadVideoController.uploadVideo(
+                      //     // _songController.text,
+                      //     // _captionController.text,
+                      //     // widget.videoPath),
+                      //     child: const Text(
+                      //       'Next',
+                      //     )),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.045,
+                      )
+                    ],
+                  )
                 ],
               ),
             )
