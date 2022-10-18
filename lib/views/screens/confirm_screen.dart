@@ -53,8 +53,8 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
               height: 30,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 1.5,
+              width: MediaQuery.of(context).size.width / 1,
+              height: MediaQuery.of(context).size.height / 1.2,
               child: VideoPlayer(controller),
             ),
             const SizedBox(
@@ -95,11 +95,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       // _captionController.text,
                       // widget.videoPath),
                       child: const Text(
-                        'Share!',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
+                        'Next',
                       ))
                 ],
               ),
