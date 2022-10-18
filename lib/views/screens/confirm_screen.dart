@@ -100,10 +100,6 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                       // widget.videoPath),
                       child: const Text(
                         'Next',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
                       ))
                 ],
               ),
