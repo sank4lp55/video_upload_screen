@@ -3,23 +3,23 @@ import 'dart:io';
 //import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:video_trimmer/video_trimmer.dart';
-import 'package:video_upload/views/screens/confirm_screen.dart';
+import 'package:video_upload/views/screens/preview_video.dart';
 
-class TrimmerView extends StatefulWidget {
+class TrimVideoScreen extends StatefulWidget {
   final File file;
   final String videoPath;
   //final String videoPath;
-  const TrimmerView({
+  const TrimVideoScreen({
     Key? key,
     required this.file,
     required this.videoPath,
     //required this.videoPath,
   }) : super(key: key);
   @override
-  _TrimmerViewState createState() => _TrimmerViewState();
+  _TrimVideoScreenState createState() => _TrimVideoScreenState();
 }
 
-class _TrimmerViewState extends State<TrimmerView> {
+class _TrimVideoScreenState extends State<TrimVideoScreen> {
   final Trimmer _trimmer = Trimmer();
 
   double _startValue = 0.0;
@@ -45,7 +45,7 @@ class _TrimmerViewState extends State<TrimmerView> {
         if (video != null) {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => ConfirmScreen(
+              builder: (context) => PreviewVideoScreen(
                 videoFile: File(video),
                 videoPath: video,
               ),
