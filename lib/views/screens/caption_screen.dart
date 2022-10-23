@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 //import 'package:get/get.dart';
 import 'package:video_upload/views/widgets/text_input_field.dart';
@@ -50,17 +51,40 @@ class _CaptionScreenState extends State<CaptionScreen> {
         child: Column(
           children: [
             const SizedBox(
-              height: 30,
+              height: 300,
             ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.green,
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: "Caption",
+                hintText: "Write your Caption here",
+                fillColor: Colors.transparent,
+                filled: true,
+                contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(color: Colors.grey)),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(color: Colors.grey.shade400)),
               ),
-              width: MediaQuery.of(context).size.width / 1,
-              height: MediaQuery.of(context).size.height / 1.2,
-              //child: VideoPlayer(controller),
+              keyboardType: TextInputType.multiline,
+              minLines: 1, //Normal textInputField will be displayed
+              maxLines: 100,
+              // decoration: ThemeHelper().textInputDecoration(
+              //     'Applicant Name', 'Enter Applicant Name'),
+              validator: (val) {
+                return null;
+              },
             ),
+            // Container(
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(10.0),
+            //     color: Colors.green,
+            //   ),
+            //   width: MediaQuery.of(context).size.width / 1,
+            //   height: MediaQuery.of(context).size.height / 1.2,
+            //   //child: VideoPlayer(controller),
+            // ),
             const SizedBox(
               height: 30,
             ),
@@ -90,23 +114,30 @@ class _CaptionScreenState extends State<CaptionScreen> {
                   //     icon: Icons.closed_caption,
                   //   ),
                   // ),
-                  // const SizedBox(
-                  //   height: 10,
-                  // ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       InkWell(
                         onTap: () => {},
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.11,
+                          width: MediaQuery.of(context).size.width * 0.3,
                           height: MediaQuery.of(context).size.width * 0.11,
                           decoration: BoxDecoration(
                             color: Colors.blue,
                             borderRadius: BorderRadius.all(Radius.circular(
-                                MediaQuery.of(context).size.width * 0.11 / 2)),
+                                MediaQuery.of(context).size.width * 0.015)),
                           ),
-                          child: Icon(Icons.arrow_forward_ios_rounded),
+                          child: Center(
+                              child: Text(
+                            "Upload",
+                            style: TextStyle(
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.06),
+                          )),
+                          //Icon(Icons.arrow_forward_ios_rounded),
                         ),
                       ),
                       // ElevatedButton(
