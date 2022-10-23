@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 // import 'package:video_upload/views/screens/camera_page.dart';
 // import 'package:video_upload/views/screens/add_video_page.dart';
 // import 'package:video_upload/views/screens/confirm_screen.dart';
-import 'package:video_upload/views/screens/trim_view.dart';
+import 'package:video_upload/views/screens/trim_video.dart';
 // import 'package:video_upload/views/screens/video_trim_view.dart';
 
 class AddVideoScreen extends StatelessWidget {
@@ -18,7 +18,7 @@ class AddVideoScreen extends StatelessWidget {
     if (video != null) {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => TrimmerView(
+          builder: (context) => TrimVideoScreen(
             file: File(video.path),
             videoPath: video.path,
           ),
