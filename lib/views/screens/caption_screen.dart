@@ -50,6 +50,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
       child: Scaffold(
         bottomNavigationBar: BottomAppBar(
           color: Colors.transparent,
+          // ignore: sort_child_properties_last
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -68,7 +69,8 @@ class _CaptionScreenState extends State<CaptionScreen> {
                       child: Text(
                     "Discard",
                     style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.06),
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).size.width * 0.045),
                   )),
                   //Icon(Icons.arrow_forward_ios_rounded),
                 ),
@@ -90,7 +92,8 @@ class _CaptionScreenState extends State<CaptionScreen> {
                       child: Text(
                     "Upload",
                     style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.width * 0.06),
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).size.width * 0.045),
                   )),
                   //Icon(Icons.arrow_forward_ios_rounded),
                 ),
@@ -147,7 +150,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25.0),
-                  color: Colors.green,
+                  color: Colors.grey,
                 ),
                 width: MediaQuery.of(context).size.width / 2.5,
                 height: MediaQuery.of(context).size.height / 2.95,
@@ -185,8 +188,8 @@ class _CaptionScreenState extends State<CaptionScreen> {
                 height: MediaQuery.of(context).size.width * 0.05,
               ),
               Divider(
-                color: Colors.teal.shade100,
-                thickness: 1.0,
+                color: Colors.grey,
+                thickness: 0.5,
                 indent: 15,
                 endIndent: 15,
               ),
@@ -205,7 +208,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
                         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: const Text(
                           "# Add Hashtags ",
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 20, color: Colors.grey),
                         ),
                       ),
                     ],
@@ -213,8 +216,8 @@ class _CaptionScreenState extends State<CaptionScreen> {
                 ),
               ),
               Divider(
-                color: Colors.teal.shade100,
-                thickness: 1.0,
+                color: Colors.grey,
+                thickness: 0.5,
                 indent: 15,
                 endIndent: 15,
               ),
