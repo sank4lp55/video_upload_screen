@@ -112,7 +112,9 @@ class _TrimVideoScreenState extends State<TrimVideoScreen> {
                       //   },
                       //   child: const Text("SAVE"),
                       // ),
-                      Expanded(
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.75,
                         child: VideoViewer(trimmer: _trimmer),
                       ),
                       Center(
@@ -161,38 +163,45 @@ class _TrimVideoScreenState extends State<TrimVideoScreen> {
                   ),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              Column(
                 children: [
-                  // const SizedBox(
-                  //   width: 20,
-                  // ),
-                  InkWell(
-                    onTap: () async {
-                      // _saveVideo().then((outputPath) {
-                      //   print('OUTPUT PATH: $outputPath');
-                      //   final snackBar = SnackBar(
-                      //       content: Text('Video Saved successfully'));
-                      //   ScaffoldMessenger.of(context).showSnackBar(
-                      //     snackBar,
-                      //   );
-                      // });
-                      final video = await _saveVideo();
-                      // File file = File(video.path);
-                    },
-                    child: Container(
-                      width: MediaQuery.of(context).size.width * 0.11,
-                      height: MediaQuery.of(context).size.width * 0.11,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.all(Radius.circular(
-                            MediaQuery.of(context).size.width * 0.11 / 2)),
-                      ),
-                      child: const Icon(Icons.arrow_forward_ios_rounded),
-                    ),
-                  ),
                   const SizedBox(
-                    width: 9,
+                    height: 9,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      // const SizedBox(
+                      //   width: 20,
+                      // ),
+                      InkWell(
+                        onTap: () async {
+                          // _saveVideo().then((outputPath) {
+                          //   print('OUTPUT PATH: $outputPath');
+                          //   final snackBar = SnackBar(
+                          //       content: Text('Video Saved successfully'));
+                          //   ScaffoldMessenger.of(context).showSnackBar(
+                          //     snackBar,
+                          //   );
+                          // });
+                          final video = await _saveVideo();
+                          // File file = File(video.path);
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.11,
+                          height: MediaQuery.of(context).size.width * 0.11,
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                MediaQuery.of(context).size.width * 0.11 / 2)),
+                          ),
+                          child: const Icon(Icons.arrow_forward_ios_rounded),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                    ],
                   ),
                 ],
               ),
