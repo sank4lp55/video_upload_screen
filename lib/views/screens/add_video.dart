@@ -1,13 +1,7 @@
 import 'dart:io';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_camera/flutter_camera.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:video_upload/views/screens/camera_page.dart';
-// import 'package:video_upload/views/screens/add_video_page.dart';
-// import 'package:video_upload/views/screens/confirm_screen.dart';
 import 'package:video_upload/views/screens/trim_video.dart';
-// import 'package:video_upload/views/screens/video_trim_view.dart';
 
 class AddVideoScreen extends StatelessWidget {
   const AddVideoScreen({Key? key}) : super(key: key);
@@ -92,7 +86,7 @@ class AddVideoScreen extends StatelessWidget {
             width: 190,
             height: 50,
             decoration:
-                const BoxDecoration(color: Colors.green), //buttonColor),
+                const BoxDecoration(color: Colors.green), 
             child: const Center(
               child: Text(
                 'Add Video',

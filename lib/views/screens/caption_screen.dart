@@ -1,8 +1,4 @@
-import 'dart:io';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-//import 'package:get/get.dart';
-import 'package:video_upload/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 
 class CaptionScreen extends StatefulWidget {
@@ -20,8 +16,8 @@ class CaptionScreen extends StatefulWidget {
 
 class _CaptionScreenState extends State<CaptionScreen> {
   late VideoPlayerController controller;
-  TextEditingController _songController = TextEditingController();
-  TextEditingController _captionController = TextEditingController();
+ // TextEditingController _songController = TextEditingController();
+  final TextEditingController _captionController = TextEditingController();
 
   // UploadVideoController uploadVideoController =
   //     Get.put(UploadVideoController());
@@ -72,7 +68,6 @@ class _CaptionScreenState extends State<CaptionScreen> {
                         fontWeight: FontWeight.bold,
                         fontSize: MediaQuery.of(context).size.width * 0.045),
                   )),
-                  //Icon(Icons.arrow_forward_ios_rounded),
                 ),
               ),
               SizedBox(
@@ -95,7 +90,6 @@ class _CaptionScreenState extends State<CaptionScreen> {
                         fontWeight: FontWeight.bold,
                         fontSize: MediaQuery.of(context).size.width * 0.045),
                   )),
-                  //Icon(Icons.arrow_forward_ios_rounded),
                 ),
               ),
               // ElevatedButton(
@@ -115,7 +109,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
           elevation: 0,
         ),
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               Row(
@@ -133,9 +127,10 @@ class _CaptionScreenState extends State<CaptionScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(
                             MediaQuery.of(context).size.width * 0.11 / 2)),
                       ),
-                      child: Icon(Icons.arrow_back_ios_new_rounded),
+                      child: const Icon(Icons.arrow_back_ios_new_rounded),
                     ),
                   ),
+                  // ignore: avoid_unnecessary_containers
                   Container(
                     child: const Text(
                       "Add caption",
@@ -159,7 +154,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
                 height: MediaQuery.of(context).size.width * 0.05,
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: TextFormField(
                   decoration: InputDecoration(
                     labelText: "Caption",
@@ -177,6 +172,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
                   keyboardType: TextInputType.multiline,
                   minLines: 1, //Normal textInputField will be displayed
                   maxLines: 1000,
+                  controller: _captionController,
                   // decoration: ThemeHelper().textInputDecoration(
                   //     'Applicant Name', 'Enter Applicant Name'),
                   validator: (val) {
@@ -187,14 +183,14 @@ class _CaptionScreenState extends State<CaptionScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.width * 0.05,
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 0.5,
                 indent: 15,
                 endIndent: 15,
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 decoration: const BoxDecoration(
                   // borderRadius: BorderRadius.circular(10.0),
                   color: Colors.transparent,
@@ -203,10 +199,11 @@ class _CaptionScreenState extends State<CaptionScreen> {
                 height: MediaQuery.of(context).size.height * 0.045,
                 child: Expanded(
                   child: Row(
+                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: const Text(
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                        child: Text(
                           "# Add Hashtags ",
                           style: TextStyle(fontSize: 20, color: Colors.grey),
                         ),
@@ -215,7 +212,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
                   ),
                 ),
               ),
-              Divider(
+              const Divider(
                 color: Colors.grey,
                 thickness: 0.5,
                 indent: 15,
