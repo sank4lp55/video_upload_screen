@@ -1,6 +1,4 @@
 import 'dart:io';
-
-//import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:video_trimmer/video_trimmer.dart';
 import 'package:video_upload/views/screens/preview_video.dart';
@@ -92,7 +90,7 @@ class _TrimVideoScreenState extends State<TrimVideoScreen> {
               children: <Widget>[
                 Visibility(
                   visible: _progressVisibility,
-                  child: LinearProgressIndicator(
+                  child: const LinearProgressIndicator(
                     backgroundColor: Colors.red,
                   ),
                 ),
@@ -135,12 +133,12 @@ class _TrimVideoScreenState extends State<TrimVideoScreen> {
                 ),
                 TextButton(
                   child: _isPlaying
-                      ? Icon(
+                      ? const Icon(
                           Icons.pause,
                           size: 80.0,
                           color: Colors.white,
                         )
-                      : Icon(
+                      : const Icon(
                           Icons.play_arrow,
                           size: 80.0,
                           color: Colors.white,

@@ -1,9 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:video_upload/views/screens/caption_screen.dart';
-//import 'package:get/get.dart';
-import 'package:video_upload/views/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
+
+import 'package:audioplayers/audioplayers.dart';
+import 'package:file_picker/file_picker.dart';
 
 class PreviewVideoScreen extends StatefulWidget {
   final File videoFile;
@@ -20,8 +21,12 @@ class PreviewVideoScreen extends StatefulWidget {
 
 class _ConfirmScreenState extends State<PreviewVideoScreen> {
   late VideoPlayerController controller;
-  TextEditingController _songController = TextEditingController();
-  TextEditingController _captionController = TextEditingController();
+  AudioPlayer _audioPlayer = AudioPlayer();
+  bool isPlaying = false;
+  String currentTime = "00:00";
+  String completeTime = "00:00";
+  // TextEditingController _songController = TextEditingController();
+  // TextEditingController _captionController = TextEditingController();
 
   // UploadVideoController uploadVideoController =
   //     Get.put(UploadVideoController());
@@ -54,10 +59,6 @@ class _ConfirmScreenState extends State<PreviewVideoScreen> {
               Column(
                 children: [
                   Container(
-                    // decoration: BoxDecoration(
-                    //   borderRadius: BorderRadius.circular(25.0),
-                    //   color: Colors.green,
-                    // ),
                     width: MediaQuery.of(context).size.width / 1,
                     height: MediaQuery.of(context).size.height / 1.2,
                     child: VideoPlayer(controller),
@@ -97,25 +98,34 @@ class _ConfirmScreenState extends State<PreviewVideoScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            // Expanded(
-                            //   child: Container(
-                            //     margin:
-                            //         const EdgeInsets.symmetric(horizontal: 10),
-                            //     width: MediaQuery.of(context).size.width * 0.50,
-                            //     height:
-                            //         MediaQuery.of(context).size.width * 0.11,
-                            //     child: TextInputField(
-                            //       controller: _captionController,
-                            //       labelText: 'Caption',
-                            //       icon: Icons.closed_caption,
-                            //     ),
-                            //   ),
-                            // ),
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {},
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(
+                                            MediaQuery.of(context).size.width *
+                                                0.11 /
+                                                2)),
+                                  ),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.50,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.11,
+                                  child:
+                                      const Center(child: Text("Choose Song")),
+                                ),
+                              ),
+                            ),
                             InkWell(
                               onTap: () => {
                                 Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: (context) => CaptionScreen(
+                                    builder: (context) => const CaptionScreen(
                                         // videoFile: File(video),
                                         // videoPath: video,
                                         ),
@@ -134,7 +144,8 @@ class _ConfirmScreenState extends State<PreviewVideoScreen> {
                                               0.11 /
                                               2)),
                                 ),
-                                child: Icon(Icons.arrow_forward_ios_rounded),
+                                child:
+                                    const Icon(Icons.arrow_forward_ios_rounded),
                               ),
                             ),
                             // ElevatedButton(
@@ -171,7 +182,7 @@ class _ConfirmScreenState extends State<PreviewVideoScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(
                             MediaQuery.of(context).size.width * 0.11 / 2)),
                       ),
-                      child: Icon(Icons.arrow_back_ios_new_rounded),
+                      child: const Icon(Icons.arrow_back_ios_new_rounded),
                     ),
                   ),
                 ],
