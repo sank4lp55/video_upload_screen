@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -15,9 +17,12 @@ class CaptionScreen extends StatefulWidget {
 }
 
 class _CaptionScreenState extends State<CaptionScreen> {
-  late VideoPlayerController controller;
- // TextEditingController _songController = TextEditingController();
+  //late VideoPlayerController controller;
+  // TextEditingController _songController = TextEditingController();
   final TextEditingController _captionController = TextEditingController();
+  final growableList = <String>[' '];
+  String caption = "";
+  String hashtags = "";
 
   // UploadVideoController uploadVideoController =
   //     Get.put(UploadVideoController());
@@ -74,7 +79,36 @@ class _CaptionScreenState extends State<CaptionScreen> {
                 width: MediaQuery.of(context).size.width * 0.09,
               ),
               InkWell(
-                onTap: () => {},
+                // onTap: () async {
+                //   setState(() {
+                //     caption = _captionController.toString();
+                //     var p = "";
+                //     var w = "";
+                //     caption = caption + " ";
+
+                //     for (int i = 0; i < caption.length; i++) {
+                //       var ch = caption[i];
+                //       if (ch != ' ') {
+                //         p = p + ch;
+                //       } else if (p.length != 0) {
+                //         // ScaffoldMessenger.of(context)
+                //         //     .showSnackBar(SnackBar(content: Text(p)));
+                //         if (p[0] == '#') {
+                //           growableList.add(p);
+                //           w = w + " " + p;
+                //           //
+                //         }
+                //         p = "";
+                //       }
+                //     }
+                //     String news = "";
+                //     for (int i = 0; i < growableList.length; i++) {
+                //       news = news + " " + growableList[i];
+                //     }
+                //     ScaffoldMessenger.of(context)
+                //         .showSnackBar(SnackBar(content: Text(news)));
+                //   });
+                // },
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.3,
                   height: MediaQuery.of(context).size.width * 0.11,
@@ -197,19 +231,17 @@ class _CaptionScreenState extends State<CaptionScreen> {
                 ),
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.045,
-                child: Expanded(
-                  child: Row(
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                        child: Text(
-                          "# Add Hashtags ",
-                          style: TextStyle(fontSize: 20, color: Colors.grey),
-                        ),
+                child: Row(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: Text(
+                        "# Add Hashtags ",
+                        style: TextStyle(fontSize: 20, color: Colors.grey),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               const Divider(
