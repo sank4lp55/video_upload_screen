@@ -20,7 +20,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
   //late VideoPlayerController controller;
   // TextEditingController _songController = TextEditingController();
   final TextEditingController _captionController = TextEditingController();
-  final growableList = <String>[' '];
+  var growableList = <String>[' '];
   String caption = "";
   String hashtags = "";
 
@@ -79,36 +79,33 @@ class _CaptionScreenState extends State<CaptionScreen> {
                 width: MediaQuery.of(context).size.width * 0.09,
               ),
               InkWell(
-                // onTap: () async {
-                //   setState(() {
-                //     caption = _captionController.toString();
-                //     var p = "";
-                //     var w = "";
-                //     caption = caption + " ";
+                onTap: () async {
+                  setState(() {
+                    caption = _captionController.text;
+                    growableList = <String>[
+                      ' '
+                    ]; //Reinitializes list to empty list after every upload button tap.
+                    caption =
+                        "$caption "; // Adds an extra space at the end of caption to not miss out the last word.
+                    String p = ""; //Stores each word of the string caption.
 
-                //     for (int i = 0; i < caption.length; i++) {
-                //       var ch = caption[i];
-                //       if (ch != ' ') {
-                //         p = p + ch;
-                //       } else if (p.length != 0) {
-                //         // ScaffoldMessenger.of(context)
-                //         //     .showSnackBar(SnackBar(content: Text(p)));
-                //         if (p[0] == '#') {
-                //           growableList.add(p);
-                //           w = w + " " + p;
-                //           //
-                //         }
-                //         p = "";
-                //       }
-                //     }
-                //     String news = "";
-                //     for (int i = 0; i < growableList.length; i++) {
-                //       news = news + " " + growableList[i];
-                //     }
-                //     ScaffoldMessenger.of(context)
-                //         .showSnackBar(SnackBar(content: Text(news)));
-                //   });
-                // },
+                    for (int i = 0; i < caption.length; i++) {
+                      var ch = caption[i]; // Extracts each character .
+                      if (ch != ' ') {
+                        p = p + ch; // Forming of the word .
+                      } else {
+                        if (p.isNotEmpty && p[0] == '#') {
+                          growableList.add(p);
+                        }
+                        p = "";
+                      }
+                    }
+
+                    growableList.removeAt(0); // Removes first empty string .
+                    // The Growable list now has all the Hastags used in the caption .
+                    //print(growableList);
+                  });
+                },
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.3,
                   height: MediaQuery.of(context).size.width * 0.11,
