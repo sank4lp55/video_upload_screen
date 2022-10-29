@@ -234,7 +234,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
                     const Padding(
                       padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                       child: Text(
-                        "# Add Hashtags ",
+                        "#Add Hashtags ",
                         style: TextStyle(fontSize: 20, color: Colors.grey),
                       ),
                     ),
