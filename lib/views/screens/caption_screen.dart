@@ -22,7 +22,7 @@ class _CaptionScreenState extends State<CaptionScreen> {
   final TextEditingController _captionController = TextEditingController();
   var growableList = <String>[' '];
   String caption = "";
-  String hashtags = "";
+  //String hashtags = "";
 
   // UploadVideoController uploadVideoController =
   //     Get.put(UploadVideoController());
